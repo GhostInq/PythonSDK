@@ -40,12 +40,18 @@ class ServerApi(object):
         self.__authenticate()
 
     # relative image_path in Pixpie system
+    def get_image_url(self, image_path, width, height, quality, webp=False, crop=CropAlignType.DEFAULT):
+        return self.__generate_url(PATH_GET_IMAGE, image_path, width, height, quality, webp, crop)
+
     def get_image(self, image_path, width, height, quality, webp=False, crop=CropAlignType.DEFAULT):
-        return self.__get_image_on_fly(PATH_GET_IMAGE, image_path, width, height, quality, webp, crop)
+        return requests.get(self.get_image_url(image_path, width, height, quality, webp, crop))
 
     # full URL with http:// or https://
+    def get_remote_image_url(self, url, width, height, quality, webp=False, crop=CropAlignType.DEFAULT):
+        return self.__generate_url(PATH_GET_REMOTE_IMAGE, url, width, height, quality, webp, crop)
+
     def get_remote_image(self, url, width, height, quality, webp=False, crop=CropAlignType.DEFAULT):
-        return self.__get_image_on_fly(PATH_GET_REMOTE_IMAGE, url, width, height, quality, webp, crop)
+        return requests.get(self.get_image_url(url, width, height, quality, webp, crop))
 
     def upload_image(self, local_image_path, inner_path):
 
@@ -140,7 +146,7 @@ class ServerApi(object):
 
         return response
 
-    def __get_image_on_fly(self, path, image_path, width, height, quality, webp=False, crop=CropAlignType.DEFAULT):
+    def __generate_url(self, path, image_path, width, height, quality, webp=False, crop=CropAlignType.DEFAULT):
 
         if webp:
             img_type = 'webp'
@@ -162,7 +168,7 @@ class ServerApi(object):
 
         print('Pixpie url: ' + url)
 
-        return requests.get(url)
+        return url
 
     def __append_params_string(self, param_prefix, param_value, params_string):
 
