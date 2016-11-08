@@ -51,7 +51,7 @@ class ServerApi(object):
         return self.__generate_url(PATH_GET_REMOTE_IMAGE, url, width, height, quality, webp, crop)
 
     def get_remote_image(self, url, width, height, quality, webp=False, crop=CropAlignType.DEFAULT):
-        return requests.get(self.get_image_url(url, width, height, quality, webp, crop))
+        return requests.get(self.get_remote_image_url(url, width, height, quality, webp, crop))
 
     def upload_image(self, local_image_path, inner_path):
 
