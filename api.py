@@ -82,17 +82,6 @@ class ServerApi(object):
 
         return self.__do_authorized_delete(url, json_data)
 
-    def dir_exists(self, parent_folder, inner_folder):
-
-        response = self.list_items(parent_folder)
-
-        if response.status_code == 403 or response.status_code == 404 or response.status_code == 500:
-            return None
-
-        if response.status_code == 200:
-            response_new = response.json()
-            return inner_folder in response_new['folders']
-
     def __authenticate(self):
         timestamp = int(time.time())
 
