@@ -74,9 +74,30 @@ There are a few ways how to upload local images to Pixpie cloud.
   
   ServerApi.get_image(self, image_path, width, height, quality, webp=False, crop=CropAlignType.DEFAULT)
   ServerApi.get_remote_image(self, url, width, height, quality, webp=False, crop=CropAlignType.DEFAULT)
+  
+```
 
+### Delete ###
+
+``` python
+
+  ServerApi.batch_delete(self, images_to_delete, folders_to_delete)
 
 ```
+
+- images - list of relative paths of images
+- folders - list of relative paths of folders
+
+
+### List items ###
+
+``` python
+
+  ServerApi.list_items(self, inner_path)
+
+```
+
+- innerPath - relative path to folder in Pixpie cloud
 
 ## License
 
