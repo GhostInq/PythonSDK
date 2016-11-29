@@ -1,5 +1,5 @@
 # Pixpie Python SDK #
-[![Analytics](https://ga-beacon.appspot.com/UA-88187046-1/pixpie-github/PythonSDK?pixel)](https://github.com/PixpieCo/PythonSDK
+[![Analytics](https://ga-beacon.appspot.com/UA-88187046-1/pixpie-github/PythonSDK?pixel)](https://github.com/PixpieCo/PythonSDK)
 https://www.pixpie.co
 
 ## What is it for? ##
